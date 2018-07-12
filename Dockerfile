@@ -21,6 +21,8 @@ RUN buildDeps=" \
         libpq-dev \
         libxml2-dev \
     " \
+    && 	pecl update-channels; \
+	rm -rf /tmp/pear ~/.pearrc \
     && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y $buildDeps $runtimeDeps \
     && docker-php-ext-install \
         bcmath \
