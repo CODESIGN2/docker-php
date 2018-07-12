@@ -40,13 +40,13 @@ RUN buildDeps=" \
         pgsql \
         soap \
         zip \
-    && if [ "$PHP_VERSION" != "7.2" ] ; then docker-php-ext-install mcrypt ; else echo "No Mcrypt" ; fi \
+    && if [ "$PHP_VERSION" == "7.2" ] ; then echo "No Mcrypt" ; else docker-php-ext-install mcrypt ; fi \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install ldap \
     && docker-php-ext-install exif \
-    && if [ "$PHP_VERSION" = "5.6" ] ; then pecl install memcached-2.2.0 redis ; else pecl install memcached redis ; fi \
+    && if [ "$PHP_VERSION" == "5.6" ] ; then pecl install memcached-2.2.0 redis ; else pecl install memcached redis ; fi \
     && docker-php-ext-enable memcached.so redis.so \
     && pecl install xdebug-2.5.5 \
     && docker-php-ext-enable xdebug \
