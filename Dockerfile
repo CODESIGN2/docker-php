@@ -27,11 +27,9 @@ RUN buildDeps=" \
     && docker-php-ext-install \
         bcmath \
         bz2 \
-        curl \
         calendar \
         iconv \
         intl \
-        json \
         mbstring \
         mysqli \
         opcache \
@@ -40,7 +38,7 @@ RUN buildDeps=" \
         pgsql \
         soap \
         zip \
-    && if [ "$PHP_VERSION" = "7.2" ] ; then echo "No Mcrypt" ; else docker-php-ext-install mcrypt ; fi \
+    && if [ "$PHP_VERSION" = "7.2" ] ; then echo "No Mcrypt, Curl, JSON" ; else docker-php-ext-install mcrypt curl json ; fi \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
