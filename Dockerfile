@@ -1,4 +1,5 @@
-FROM php:7.0
+ARG PHP_VERSION
+FROM php:${PHP_VERSION}
 MAINTAINER codesign2@icloud.com
 
 # Install PHP extensions and PECL modules.
