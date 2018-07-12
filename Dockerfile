@@ -46,7 +46,7 @@ RUN buildDeps=" \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install ldap \
     && docker-php-ext-install exif \
-    && pecl install memcached redis \
+    && if [ "$PHP_VERSION" = "5.6" ] ; then pecl install memcached-2.2.0 redis ; else pecl install memcached redis ; fi \
     && docker-php-ext-enable memcached.so redis.so \
     && pecl install xdebug-2.5.5 \
     && docker-php-ext-enable xdebug \
