@@ -7,6 +7,7 @@ RUN buildDeps=" \
         libbz2-dev \
         libmemcached-dev \
         libsasl2-dev \
+        libcurl4-gnutls-dev \
     " \
     runtimeDeps=" \
         curl \
