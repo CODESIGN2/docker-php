@@ -13,9 +13,9 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
-  - docker build -t cd2team/docker-php:7.0 ./ --build-arg PHP_VERSION=$PHP_VERSION
+  - docker build -t cd2team/docker-php:$PHP_VERSION ./ --build-arg PHP_VERSION=$PHP_VERSION
 
 deploy:
   provider: script
   script:
-    - docker push cd2team/docker-php:7.0
+    - docker push cd2team/docker-php:$PHP_VERSION
