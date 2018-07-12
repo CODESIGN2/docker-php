@@ -17,4 +17,6 @@ script:
 deploy:
   provider: script
   script:
-    - docker push cd2team/docker-php:$PHP_VERSION
+    - docker push cd2team/docker-php:7.0
+    - docker push cd2team/docker-php:7.1
+    - docker push cd2team/docker-php:7.2
