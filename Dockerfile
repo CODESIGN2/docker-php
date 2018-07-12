@@ -2,6 +2,7 @@ ARG PHP_VERSION
 FROM php:${PHP_VERSION}
 MAINTAINER codesign2@icloud.com
 
+ENV PHP_VERSION=${PHP_VERSION}
 # Install PHP extensions and PECL modules.
 RUN buildDeps=" \
         default-libmysqlclient-dev \
