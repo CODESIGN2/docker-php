@@ -45,7 +45,7 @@ RUN buildDeps=" \
     && docker-php-ext-install exif \
     && pecl install redis \
     && docker-php-ext-enable redis.so \
-    && pecl install xdebug \
+    && pecl install xdebug-2.5.5 \
     && docker-php-ext-enable xdebug \
     && apt-get purge -y --auto-remove $buildDeps \
     && rm -r /var/lib/apt/lists/*
