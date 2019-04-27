@@ -9,6 +9,7 @@ RUN buildDeps=" \
         libbz2-dev \
         libsasl2-dev \
         libcurl4-gnutls-dev \
+	libzip-dev \
     " \
     runtimeDeps=" \
         curl \
