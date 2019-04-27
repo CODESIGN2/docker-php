@@ -3,6 +3,10 @@ FROM php:${PHP_VERSION}
 MAINTAINER codesign2@icloud.com
 
 ENV PHP_VERSION=${PHP_VERSION}
+
+COPY sources.list /etc/apt/sources.list
+COPY 99ignore-https /etc/apt/apt.conf.d/99ignore-https
+
 # Install PHP extensions and PECL modules.
 RUN buildDeps=" \
         default-libmysqlclient-dev \
@@ -23,7 +27,7 @@ RUN buildDeps=" \
     " \
     && 	pecl update-channels; \
 	rm -rf /tmp/pear ~/.pearrc \
-    && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y $buildDeps $runtimeDeps \
+    && apt-get update --ignore-missing && DEBIAN_FRONTEND=noninteractive apt-get install -y $buildDeps $runtimeDeps \
     && docker-php-ext-install \
         bcmath \
         bz2 \
